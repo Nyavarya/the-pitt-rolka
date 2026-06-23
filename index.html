@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/medical-doctor.png" alt="medical-doctor" />
+    <title>The Pitt</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-stethoscope"></i>
+                    <div>
+                        <h1>"The Pitt"</h1>
+                        <p>Важные для ролки персонажи</p>
+                    </div>
+                </div>
+                <div class="medical-badge">
+                    <i class="fas fa-user-md"></i> Виртуальная клиника персонажей
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="page-navigation">
+        <div class="container">
+            <div class="nav-buttons">
+                <button class="nav-button active" id="page1Btn">
+                    <i class="fas fa-user-doctor"></i>
+                    <span>Первый сезон</span>
+                </button>
+                <button class="nav-button" id="page2Btn">
+                    <i class="fas fa-user-nurse"></i>
+                    <span>Второй сезон</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <main class="container">
+        <div class="page active" id="page1">
+            <h2 class="page-title">Анкеты персонажей из сериала The Pitt</h2>
+            <p class="page-description">В анкетах присутствует хедканоны (мы не заставляем их придерживаться).</p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" onclick="filterCharacters('all')">
+                    <i class="fas fa-users"></i> Все
+                </button>
+                <button class="filter-btn" data-filter="doctor" onclick="filterCharacters('doctor')">
+                    <i class="fas fa-user-md"></i> Врачи
+                </button>
+                <button class="filter-btn" data-filter="resident" onclick="filterCharacters('resident')">
+                    <i class="fas fa-user-graduate"></i> Ординаторы
+                </button>
+                <button class="filter-btn" data-filter="nurse" onclick="filterCharacters('nurse')">
+                    <i class="fas fa-user-nurse"></i> Медсестры
+                </button>
+                <button class="filter-btn" data-filter="admin" onclick="filterCharacters('admin')">
+                    <i class="fas fa-user-tie"></i> Другие
+                </button>
+            </div>
+            
+            <div class="characters-grid" id="charactersContainer1">
+            </div>
+        </div>
+        
+        <div class="page" id="page2">
+            <h2 class="page-title">Персонажи второго сезона The Pitt</h2>
+            <p class="page-description">Второй сезон.(В анкетах присутствует хедканоны (мы не заставляем их придерживаться))</p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" onclick="filterCharacters('all')">
+                    <i class="fas fa-users"></i> Все
+                </button>
+                <button class="filter-btn" data-filter="doctor" onclick="filterCharacters('doctor')">
+                    <i class="fas fa-user-md"></i> Врачи
+                </button>
+                <button class="filter-btn" data-filter="resident" onclick="filterCharacters('resident')">
+                    <i class="fas fa-user-graduate"></i> Ординаторы
+                </button>
+                <button class="filter-btn" data-filter="nurse" onclick="filterCharacters('nurse')">
+                    <i class="fas fa-user-nurse"></i> Медсестры
+                </button>
+                <button class="filter-btn" data-filter="admin" onclick="filterCharacters('admin')">
+                    <i class="fas fa-user-tie"></i> Другие
+                </button>
+            </div>
+            
+            <div class="characters-grid" id="charactersContainer2">
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Сериал-Диагностика</span>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Медицинский центр "Сериальные персонажи". Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="characterModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-header">
+                <div class="modal-character-info">
+                    <div class="modal-character-image">
+                        <img id="modalCharacterImage" src="" alt="Персонаж">
+                    </div>
+                    <div class="modal-character-text">
+                        <h2 id="modalCharacterName">Имя персонажа</h2>
+                        <p id="modalCharacterRole">Роль в сериале</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-user"></i> Описание персонажа</h3>
+                    <p id="modalCharacterDesc">Описание будет загружено здесь</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-heart"></i> Прошлые отношения</h3>
+                    <p id="modalCharacterMedical">Информация об отношениях будет загружена здесь</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fab fa-telegram"></i> Telegram</h3>
+                    <p id="modalCharacterPlot">Telegram не указан</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
